@@ -6,7 +6,8 @@ defmodule AppGen.MixProject do
       app: :app_gen,
       version: "0.1.1",
       elixir: "~> 1.12",
-      description: "Config as code generation for phoenix applications, don't write apps, generate them",
+      description:
+        "Config as code generation for phoenix applications, don't write apps, generate them",
       start_permanent: Mix.env() == :prod,
       elixirc_paths: elixirc_paths(Mix.env()),
       deps: deps(),
@@ -26,16 +27,14 @@ defmodule AppGen.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
-      {:absinthe_generator, "~> 0.1"},
-      {:factory_ex, "~> 0.2"},
-
+      {:absinthe_generator, github: "alanvardy/absinthe_generator", branch: "main"},
+      {:factory_ex,
+       github: "theblitzapp/factory_ex", branch: "main", override: true, only: [:dev, :test]},
       {:phoenix, "~> 1.5"},
       {:jason, "~> 1.3"},
       {:ecto, "~> 3.0"},
       {:ecto_shorts, ">= 1.0.0"},
-
       {:nimble_parsec, "~> 1.1"},
-
       {:ex_doc, ">= 0.0.0", only: :dev, runtime: false}
     ]
   end
@@ -56,7 +55,7 @@ defmodule AppGen.MixProject do
   defp docs do
     [
       main: "AppGen",
-      source_url: "https://github.com/theblitzapp/app_gen",
+      source_url: "https://github.com/theblitzapp/app_gen"
     ]
   end
 end
